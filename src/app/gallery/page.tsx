@@ -57,7 +57,7 @@ export default function Gallery() {
     "/stock_images/project_image_53.jpeg",
     "/stock_images/project_image_54.jpeg",
     "/stock_images/project_image_55.jpeg",
-    "/stock_images/project_image_56.jpeg"
+    "/stock_images/project_image_56.jpeg",
     "/stock_images/project_image_57.jpeg",
   ];
 
