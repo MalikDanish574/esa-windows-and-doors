@@ -59,6 +59,14 @@ export default function Gallery() {
     "/stock_images/project_image_55.jpeg",
     "/stock_images/project_image_56.jpeg",
     "/stock_images/project_image_57.jpeg",
+    "/stock_images/project_image_58.jpeg",
+    "/stock_images/project_image_59.jpeg",
+    "/stock_images/project_image_60.jpeg",
+    "/stock_images/project_image_61.jpeg",
+    "/stock_images/project_image_62.jpeg",
+    "/stock_images/project_image_63.jpeg",
+    "/stock_images/project_image_64.jpeg",
+    "/stock_images/project_image_65.jpeg",
   ];
 
   return (
