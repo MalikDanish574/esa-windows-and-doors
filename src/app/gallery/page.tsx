@@ -78,6 +78,10 @@ export default function Gallery() {
     "/stock_images/project_image_74.jpeg",
     "/stock_images/project_image_75.jpeg",
     "/stock_images/project_image_76.jpeg",
+    "/stock_images/project_image_77.jpeg",
+    "/stock_images/project_image_78.jpeg",
+    "/stock_images/project_image_79.jpeg",
+    "/stock_images/project_image_80.jpeg",
   ];
 
   return (
