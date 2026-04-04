@@ -82,6 +82,9 @@ export default function Gallery() {
     "/stock_images/project_image_78.jpeg",
     "/stock_images/project_image_79.jpeg",
     "/stock_images/project_image_80.jpeg",
+    "/stock_images/project_image_81.jpeg",
+    "/stock_images/project_image_82.jpeg",
+    "/stock_images/project_image_83.jpeg",
   ];
 
   return (
