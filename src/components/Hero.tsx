@@ -1,35 +1,42 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
 import Link from 'next/link';
-// Using public folder for images
 
 export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+      {/* Background image with slow zoom animation */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animate"
         style={{ backgroundImage: `url('/stock_images/modern_glass_window__a319ff26.jpg')` }}
       />
-      
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-      
+
+      {/* Layered overlays for depth */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight px-4">
+        {/* Badge */}
+        <div className="hero-animate-1 inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-sm font-medium mb-6">
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          15+ Years of Expert Glazing
+        </div>
+
+        <h1 className="hero-animate-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-5 leading-tight tracking-tight px-4">
           Professional
-          <span className="block text-blue-400">Windows & Doors</span>
+          <span className="block text-blue-400 drop-shadow-lg">Windows &amp; Doors</span>
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 max-w-3xl mx-auto leading-relaxed px-4">
+
+        <p className="hero-animate-3 text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-white/85 px-4">
           Expert glass installation, window replacement, and commercial glazing solutions with over 15 years of experience
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 md:mb-12 px-4">
+
+        <div className="hero-animate-3 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 px-4">
           <Link href="/contact">
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg"
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 text-lg shadow-xl hover:shadow-primary/30 hover:scale-105 transition-all duration-300"
               data-testid="button-get-quote"
             >
               Get Free Quote
@@ -37,10 +44,10 @@ export default function Hero() {
             </Button>
           </Link>
           <Link href="/gallery">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="lg"
-              className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg backdrop-blur-sm bg-white/10"
+              className="border-2 border-white/70 text-white hover:bg-white hover:text-black px-8 py-4 text-lg backdrop-blur-sm bg-white/10 hover:scale-105 transition-all duration-300"
               data-testid="button-our-work"
             >
               View Our Work
@@ -48,36 +55,31 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Features */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto px-4">
-          <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
-            <div className="bg-primary p-2 md:p-3 rounded-full">
-              <Shield className="w-6 md:w-8 h-6 md:h-8 text-primary-foreground" />
+        {/* Glass feature cards */}
+        <div className="hero-animate-4 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-4xl mx-auto px-4">
+          {[
+            { icon: Shield, title: 'Quality Guaranteed', desc: 'All work comes with comprehensive warranty' },
+            { icon: Clock,  title: 'Quick Turnaround',   desc: 'Fast and efficient installation service' },
+            { icon: Users,  title: 'Expert Team',        desc: 'Certified glaziers with 15+ years experience' },
+          ].map(({ icon: Icon, title, desc }) => (
+            <div
+              key={title}
+              className="glass-card rounded-2xl p-5 md:p-6 flex flex-col items-center gap-3 text-center hover:bg-white/20 transition-colors duration-300"
+            >
+              <div className="bg-primary/80 backdrop-blur-sm p-3 rounded-xl">
+                <Icon className="w-6 md:w-7 h-6 md:h-7 text-white" />
+              </div>
+              <h3 className="text-base md:text-lg font-semibold">{title}</h3>
+              <p className="text-white/75 text-sm">{desc}</p>
             </div>
-            <h3 className="text-base md:text-lg font-semibold">Quality Guaranteed</h3>
-            <p className="text-white/80 text-sm md:text-base">All work comes with comprehensive warranty</p>
-          </div>
-          <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
-            <div className="bg-primary p-2 md:p-3 rounded-full">
-              <Clock className="w-6 md:w-8 h-6 md:h-8 text-primary-foreground" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold">Quick Turnaround</h3>
-            <p className="text-white/80 text-sm md:text-base">Fast and efficient installation service</p>
-          </div>
-          <div className="flex flex-col items-center gap-2 md:gap-3 text-center">
-            <div className="bg-primary p-2 md:p-3 rounded-full">
-              <Users className="w-6 md:w-8 h-6 md:h-8 text-primary-foreground" />
-            </div>
-            <h3 className="text-base md:text-lg font-semibold">Expert Team</h3>
-            <p className="text-white/80 text-sm md:text-base">Certified glaziers with 15+ years experience</p>
-          </div>
+          ))}
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
+          <div className="w-1 h-3 bg-white/70 rounded-full" />
         </div>
       </div>
     </section>

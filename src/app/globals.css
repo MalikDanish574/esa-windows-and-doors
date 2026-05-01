@@ -182,7 +182,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --button-outline: rgba(255,255,255, .10);
     --badge-outline: rgba(255,255,255, .05);
     --opaque-button-border-intensity: 9;
@@ -330,4 +330,164 @@ input[type="search"]::-webkit-search-cancel-button {
 .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
 .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
   inset: -1px;
+}
+
+/* ─── Smooth scroll ─── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Scroll-triggered animation system ─── */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-animate.from-left  { transform: translateX(-40px); }
+.scroll-animate.from-right { transform: translateX(40px); }
+.scroll-animate.from-scale { transform: scale(0.93); }
+.scroll-animate.in-view    { opacity: 1 !important; transform: none !important; }
+
+/* ─── Staggered children ─── */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.stagger-children.in-view > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.06s; }
+.stagger-children.in-view > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.13s; }
+.stagger-children.in-view > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.20s; }
+.stagger-children.in-view > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.27s; }
+.stagger-children.in-view > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.34s; }
+.stagger-children.in-view > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.41s; }
+
+/* ─── Hero entrance animations ─── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(44px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-animate-1 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.10s both; }
+.hero-animate-2 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both; }
+.hero-animate-3 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both; }
+.hero-animate-4 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.64s both; }
+
+/* ─── Hero background slow zoom ─── */
+@keyframes heroBgZoom {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+.hero-bg-animate {
+  animation: heroBgZoom 12s ease-out forwards;
+}
+
+/* ─── Infinite marquee ─── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  animation: marquee-left 45s linear infinite;
+  width: max-content;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+.marquee-track-reverse {
+  animation: marquee-right 55s linear infinite;
+}
+.marquee-track-reverse:hover { animation-play-state: paused; }
+
+/* ─── Glassmorphism (hero feature cards) ─── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+/* ─── Section accent underline ─── */
+.section-accent {
+  display: block;
+  width: 52px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 9999px;
+  margin: 0.75rem auto 1.25rem;
+}
+
+/* ─── Service card icon hover ─── */
+.service-icon-wrap {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+.service-icon-wrap:hover {
+  transform: scale(1.12) rotate(-4deg);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ─── Floating icon animation (services page cards) ─── */
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+.icon-float {
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+/* ─── Process step number pop-in ─── */
+@keyframes stepPop {
+  0%   { transform: scale(0.6); opacity: 0; }
+  70%  { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.step-number {
+  animation: stepPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ─── Accordion open/close animation (direct CSS — no Tailwind token needed) ─── */
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+
+.accordion-content[data-state='open'] {
+  animation: accordion-down 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-content[data-state='closed'] {
+  animation: accordion-up 0.22s ease-in;
+}
+
+/* ─── Shimmer sweep on service detail cards ─── */
+.shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.06) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0s;
+  pointer-events: none;
+}
+.shimmer-hover:hover::after {
+  transform: translateX(100%);
+  transition: transform 0.6s ease;
 }
