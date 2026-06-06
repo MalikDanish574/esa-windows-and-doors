@@ -1,15 +1,39 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Shield, Clock, Users } from 'lucide-react';
 import Link from 'next/link';
 
+const slides = [
+  '/stock_images/project_image_01.jpeg',
+  '/stock_images/project_image_03.jpeg',
+  '/stock_images/project_image_05.jpeg',
+  '/stock_images/project_image_07.jpeg',
+];
+
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent(prev => (prev + 1) % slides.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image with slow zoom animation */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-bg-animate"
-        style={{ backgroundImage: `url('/stock_images/modern_glass_window__a319ff26.jpg')` }}
-      />
+      {/* Slideshow backgrounds */}
+      {slides.map((src, i) => (
+        <div
+          key={src}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+            i === current ? 'opacity-100 hero-slide-zoom' : 'opacity-0'
+          }`}
+          style={{ backgroundImage: `url('${src}')` }}
+        />
+      ))}
 
       {/* Layered overlays for depth */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/55 to-black/25" />
@@ -74,6 +98,22 @@ export default function Hero() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Slide dot indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`rounded-full transition-all duration-300 ${
+              i === current
+                ? 'w-6 h-2 bg-white'
+                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
       </div>
 
       {/* Scroll indicator */}

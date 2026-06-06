@@ -374,13 +374,22 @@ html {
 .hero-animate-3 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.46s both; }
 .hero-animate-4 { animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.64s both; }
 
-/* ─── Hero background slow zoom ─── */
+/* ─── Hero background slow zoom (one-shot, legacy) ─── */
 @keyframes heroBgZoom {
   from { transform: scale(1.08); }
   to   { transform: scale(1); }
 }
 .hero-bg-animate {
   animation: heroBgZoom 12s ease-out forwards;
+}
+
+/* ─── Hero slideshow slide zoom (loops while active) ─── */
+@keyframes heroSlideKenBurns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.10); }
+}
+.hero-slide-zoom {
+  animation: heroSlideKenBurns 7s ease-in-out infinite alternate;
 }
 
 /* ─── Infinite marquee ─── */
