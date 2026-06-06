@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Slideshow backgrounds */}
       {slides.map((src, i) => (
         <div
@@ -52,11 +52,11 @@ export default function Hero() {
           <span className="block text-blue-400 drop-shadow-lg">Windows &amp; Doors</span>
         </h1>
 
-        <p className="hero-animate-3 text-lg sm:text-xl md:text-2xl mb-8 max-w-3xl mx-auto leading-relaxed text-white/85 px-4">
+        <p className="hero-animate-3 text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed text-white/85 px-4">
           Expert glass installation, window replacement, and commercial glazing solutions with over 15 years of experience
         </p>
 
-        <div className="hero-animate-3 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-12 px-4">
+        <div className="hero-animate-3 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
           <Link href="/contact">
             <Button
               size="lg"
