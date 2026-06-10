@@ -117,6 +117,9 @@ export default function Gallery() {
     "/stock_images/project_image_113.jpeg",
     "/stock_images/project_image_114.jpeg",
     "/stock_images/project_image_115.jpeg",
+    "/stock_images/project_image_116.jpeg",
+    "/stock_images/project_image_117.jpeg",
+    "/stock_images/project_image_118.jpeg",
   ];
 
   return (
