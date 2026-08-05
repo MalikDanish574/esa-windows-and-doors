@@ -120,6 +120,19 @@ export default function Gallery() {
     "/stock_images/project_image_116.jpeg",
     "/stock_images/project_image_117.jpeg",
     "/stock_images/project_image_118.jpeg",
+    "/stock_images/project_image_119.jpeg",
+    "/stock_images/project_image_120.jpeg",
+    "/stock_images/project_image_121.jpeg",
+    "/stock_images/project_image_122.jpeg",
+    "/stock_images/project_image_123.jpeg",
+    "/stock_images/project_image_124.jpeg",
+    "/stock_images/project_image_125.jpeg",
+    "/stock_images/project_image_126.jpeg",
+    "/stock_images/project_image_127.jpeg",
+    "/stock_images/project_image_128.jpeg",
+    "/stock_images/project_image_129.jpeg",
+    "/stock_images/project_image_130.jpeg",
+    "/stock_images/project_image_131.jpeg",
   ];
 
   return (
