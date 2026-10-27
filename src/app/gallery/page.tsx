@@ -133,6 +133,16 @@ export default function Gallery() {
     "/stock_images/project_image_129.jpeg",
     "/stock_images/project_image_130.jpeg",
     "/stock_images/project_image_131.jpeg",
+    "/stock_images/project_image_132.jpeg",
+    "/stock_images/project_image_133.jpeg",
+    "/stock_images/project_image_134.jpeg",
+    "/stock_images/project_image_135.jpeg",
+    "/stock_images/project_image_136.jpeg",
+    "/stock_images/project_image_137.jpeg",
+    "/stock_images/project_image_138.jpeg",
+    "/stock_images/project_image_139.jpeg",
+    "/stock_images/project_image_140.jpeg",
+    "/stock_images/project_image_141.jpeg",
   ];
 
   return (
